@@ -42,7 +42,7 @@ def dnaToRna(dna, startIndex):
     for string in lstofcodons:
         string=string.replace("T","U")
         replacedlst.append(string)
-    print(replacedlst)
+    #print(replacedlst)
     return replacedlst
 
 
