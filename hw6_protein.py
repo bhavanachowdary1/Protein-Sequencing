@@ -33,7 +33,16 @@ Parameters: str ; int
 Returns: list of strs
 '''
 def dnaToRna(dna, startIndex):
-    return
+    lstofcodons=[]
+    replacedlst=[]
+    for i in range(startIndex,len(dna),3):
+        lstofcodons.append(dna[i:i+3])
+        if dna[i:i+3]=='TAG' or dna[i:i+3]=='TAA' or dna[i:i+3]=='TGA':
+            break
+    for string in lstofcodons:
+        string=string.replace("T","U")
+        replacedlst.append(string)
+    return replacedlst
 
 
 '''
@@ -196,7 +205,8 @@ if __name__ == "__main__":
     # test.week1Tests()
     # print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
     # runWeek1()
-    test.testReadFile()
+    #test.testReadFile()
+    test.testDnaToRna()
 
 
 
