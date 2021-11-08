@@ -23,7 +23,6 @@ def readFile(filename):
     string = "".join(textsplit) 
     return string
 
-    
 
 
 '''
