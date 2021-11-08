@@ -17,7 +17,12 @@ Parameters: str
 Returns: str
 '''
 def readFile(filename):
-    return
+    f=open(filename)
+    text=f.read()
+    textsplit=text.splitlines()
+    string = "".join(textsplit) 
+    return string
+   
 
 
 '''
