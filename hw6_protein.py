@@ -56,7 +56,8 @@ def makeCodonDictionary(filename):
     dictionary={}
     for i,j in file.items():
         for k in j:
-            dictionary[k.replace("T","U")]=i
+            a=k.replace("T","U")
+            dictionary[a]=i
     return dictionary
 
 
@@ -73,12 +74,9 @@ def generateProtein(codons, codonD):
     if codons[0]=='AUG':
         protein.append('Start')
     for i in range(1,len(codons)):
-        if i=='UAG' or i=='UAA' or i=='UGA':
-            protein.append('Stop')
-        else:
+        if codons[i] in codonD.keys():
             protein.append(codonD[codons[i]])
     return protein
-    
 
 
 '''
@@ -223,6 +221,7 @@ if __name__ == "__main__":
     #test.testDnaToRna()
     #test.testMakeCodonDictionary()
     test.testGenerateProtein()
+    #test.testReadFile()
 
     ## Uncomment these for Week 2 ##
     """
