@@ -87,6 +87,7 @@ Returns: 2D list of strs
 '''
 def synthesizeProteins(dnaFilename, codonFilename):
     a=readFile(dnaFilename)
+    #print(a)
     b=makeCodonDictionary(codonFilename)
     i=0
     count=0
