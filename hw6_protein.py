@@ -101,6 +101,9 @@ def synthesizeProteins(dnaFilename, codonFilename):
         else:
             i=i+1
             count=count+1
+    print("Unused bases are : ", count)
+    print("Total Bases are : ", len(a)) 
+    print("Proteins count are : ", len(proteinlist))
     return proteinlist
 
 
@@ -276,7 +279,17 @@ Parameters: list of strs ; 2D list of strs
 Returns: list of floats
 '''
 def setupChartData(labels, proteinList):
-    return
+    lst=combineProteins(proteinList)
+    dictionary=aminoAcidDictionary(lst)
+    newlist=[] # frequencies of the labels
+    for i in labels:
+        if i in dictionary:
+            a=dictionary[i]/len(lst)
+            newlist.append(a)
+        else:
+            newlist.append(0)
+    return newlist
+
 
 
 '''
@@ -327,7 +340,8 @@ if __name__ == "__main__":
     #test.testCombineProteins()
     #test.testAminoAcidDictionary()
     #test.testFindAminoAcidDifferences()
-    test.testMakeAminoAcidLabels()
+    #test.testMakeAminoAcidLabels()
+    test.testSetupChartData()
 
 
     ## Uncomment these for Week 2 ##
