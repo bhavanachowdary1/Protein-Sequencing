@@ -340,7 +340,24 @@ Parameters: no parameters
 Returns: None
 '''
 def runFullProgram():
+    import matplotlib.pyplot as plt
+    humanproteins=synthesizeProteins("data/human_p53.txt","data/codon_table.json")
+    elephantproteins=synthesizeProteins("data/elephant_p53.txt","data/codon_table.json")
+    cproteins=commonProteins(humanproteins,elephantproteins)
+    diff=findAminoAcidDifferences(humanproteins,elephantproteins,0.005)
+    displayTextResults(cproteins,diff)
+    labels=makeAminoAcidLabels(humanproteins,elephantproteins)
+    f1=setupChartData(labels,humanproteins)
+    f2=setupChartData(labels,elephantproteins)
+    edges=makeEdgeList(labels,diff)
+    createChart(labels, f1, "Human", f2, "Elephant", edgeList=edges)
+
+    
+    #print(labels)
     return
+
+
+
 
 
 ### RUN CODE ###
@@ -363,7 +380,8 @@ if __name__ == "__main__":
     #test.testMakeAminoAcidLabels()
     #test.testSetupChartData()
     #test.testCreateChart()
-    test.testMakeEdgeList()
+    #test.testMakeEdgeList()
+
 
 
     ## Uncomment these for Week 2 ##
@@ -376,8 +394,8 @@ if __name__ == "__main__":
 
     ## Uncomment these for Week 3 ##
     
-    # print("\n" + "#"*15 + " WEEK 3 TESTS " +  "#" * 16 + "\n")
-    # test.week3Tests()
-    # print("\n" + "#"*15 + " WEEK 3 OUTPUT " + "#" * 15 + "\n")
-    # runFullProgram()
+    print("\n" + "#"*15 + " WEEK 3 TESTS " +  "#" * 16 + "\n")
+    test.week3Tests()
+    print("\n" + "#"*15 + " WEEK 3 OUTPUT " + "#" * 15 + "\n")
+    runFullProgram()
     
