@@ -288,6 +288,7 @@ def setupChartData(labels, proteinList):
             newlist.append(a)
         else:
             newlist.append(0)
+    #print(newlist)
     return newlist
 
 
