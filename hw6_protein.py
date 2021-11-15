@@ -56,7 +56,8 @@ def makeCodonDictionary(filename):
     dictionary={}
     for i,j in file.items():
         for k in j:
-            dictionary[k.replace("T","U")]=i
+            a=k.replace("T","U")
+            dictionary[a]=i
     return dictionary
 
 
@@ -67,8 +68,15 @@ generateProtein(codons, codonD)
 Parameters: list of strs ; dict mapping strs to strs
 Returns: list of strs
 '''
+    
 def generateProtein(codons, codonD):
-    return
+    protein=[]
+    if codons[0]=='AUG':
+        protein.append('Start')
+    for i in range(1,len(codons)):
+        if codons[i] in codonD.keys():
+            protein.append(codonD[codons[i]])
+    return protein
 
 
 '''
@@ -211,7 +219,9 @@ if __name__ == "__main__":
     # print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
     # runWeek1()
     #test.testDnaToRna()
-    test.testMakeCodonDictionary()
+    #test.testMakeCodonDictionary()
+    test.testGenerateProtein()
+    #test.testReadFile()
 
     ## Uncomment these for Week 2 ##
     """
