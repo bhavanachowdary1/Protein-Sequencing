@@ -86,7 +86,25 @@ Parameters: str ; str
 Returns: 2D list of strs
 '''
 def synthesizeProteins(dnaFilename, codonFilename):
-    return
+    a=readFile(dnaFilename)
+    #print(a)
+    b=makeCodonDictionary(codonFilename)
+    i=0
+    count=0
+    proteinlist=[]
+    while i<len(a):
+        if a[i:i+3] == "ATG":
+            c=dnaToRna(a,i)
+            d=generateProtein(c,b)
+            proteinlist.append(d)
+            i=i+3*len(c)
+        else:
+            i=i+1
+            count=count+1
+    print("Unused bases are : ", count) 
+    print("Total Bases are : ", len(a)) 
+    print("Proteins count are : ", len(proteinlist))
+    return proteinlist
 
 
 def runWeek1():
@@ -214,14 +232,15 @@ def runFullProgram():
 
 # This code runs the test cases to check your work
 if __name__ == "__main__":
-    # print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
-    # test.week1Tests()
-    # print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
-    # runWeek1()
+    print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
+    test.week1Tests()
+    print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
+    runWeek1()
     #test.testDnaToRna()
     #test.testMakeCodonDictionary()
-    test.testGenerateProtein()
+    #test.testGenerateProtein()
     #test.testReadFile()
+    #test.testSynthesizeProteins()
 
     ## Uncomment these for Week 2 ##
     """
