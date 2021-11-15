@@ -101,6 +101,9 @@ def synthesizeProteins(dnaFilename, codonFilename):
         else:
             i=i+1
             count=count+1
+    print("Unused bases are : ", count) 
+    print("Total Bases are : ", len(a)) 
+    print("Proteins count are : ", len(proteinlist))
     return proteinlist
 
 
@@ -236,10 +239,10 @@ def runFullProgram():
 
 # This code runs the test cases to check your work
 if __name__ == "__main__":
-    # print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
-    # test.week1Tests()
-    # print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
-    # runWeek1()
+    print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
+    test.week1Tests()
+    print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
+    runWeek1()
     #test.testDnaToRna()
     #test.testMakeCodonDictionary()
     #test.testGenerateProtein()
