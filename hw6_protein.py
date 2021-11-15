@@ -123,7 +123,14 @@ Parameters: 2D list of strs ; 2D list of strs
 Returns: 2D list of strs
 '''
 def commonProteins(proteinList1, proteinList2):
-    return
+    uniqueproteinlist=[]
+    for i in proteinList1:
+        for j in proteinList2:
+            if i==j and i not in uniqueproteinlist:
+                uniqueproteinlist.append(i)
+    #print(uniqueproteinlist)
+    return uniqueproteinlist
+
 
 
 '''
@@ -241,6 +248,7 @@ if __name__ == "__main__":
     #test.testGenerateProtein()
     #test.testReadFile()
     #test.testSynthesizeProteins()
+    test.testCommonProteins()
 
     ## Uncomment these for Week 2 ##
     """
