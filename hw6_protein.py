@@ -340,16 +340,15 @@ Parameters: no parameters
 Returns: None
 '''
 def runFullProgram():
-    import matplotlib.pyplot as plt
     humanproteins=synthesizeProteins("data/human_p53.txt","data/codon_table.json")
     elephantproteins=synthesizeProteins("data/elephant_p53.txt","data/codon_table.json")
-    cproteins=commonProteins(humanproteins,elephantproteins)
-    diff=findAminoAcidDifferences(humanproteins,elephantproteins,0.005)
-    displayTextResults(cproteins,diff)
+    commonproteins=commonProteins(humanproteins,elephantproteins)
+    differences=findAminoAcidDifferences(humanproteins,elephantproteins,0.005)
+    displayTextResults(commonproteins,differences)
     labels=makeAminoAcidLabels(humanproteins,elephantproteins)
     f1=setupChartData(labels,humanproteins)
     f2=setupChartData(labels,elephantproteins)
-    edges=makeEdgeList(labels,diff)
+    edges=makeEdgeList(labels,differences)
     createChart(labels, f1, "Human", f2, "Elephant", edgeList=edges)
 
     
